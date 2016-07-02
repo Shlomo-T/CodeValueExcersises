@@ -11,20 +11,25 @@ namespace MailSystem
     {
         static void Main(string[] args)
         {
+            // creating and signing to MailManager and running timer that simulating messages that sent to the MailManager
             MailManager mgr= new MailManager();
             mgr.MailArrived += Mgr_MailArrived;
-            Timer timer = new Timer(EventsCallbck, mgr, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
+            Timer timer = new Timer(EventsSimulatorCallbck, mgr, TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(1));
 
             Console.ReadKey();
         }
 
         private static void Mgr_MailArrived(object sender, MailArrivedEventArgs e)
         {
-            Console.WriteLine($"Message title: {e.Title}, Message body: {e.Body}");
+            var title = !string.IsNullOrEmpty(e.Title) ? e.Title : string.Empty;
+            var body = !string.IsNullOrEmpty(e.Body) ? e.Body : string.Empty;
+
+            Console.WriteLine($"Message title: {title}, Message body: {body}");
         }
 
-        private static void EventsCallbck(Object obj)
+        private static void EventsSimulatorCallbck(Object obj)
         {
+            // this callback simulating mail messaging
             var mgr = obj as MailManager;
             if (mgr != null)
             {
