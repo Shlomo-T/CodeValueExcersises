@@ -79,5 +79,32 @@ namespace Rationals
                    ((Rational) obj).denominator == this.denominator;
             
         }
+
+        public static Rational operator +(Rational lObj, Rational rObj)
+        {
+            return lObj.Add(rObj);
+        }
+        public static Rational operator -(Rational lObj, Rational rObj)
+        {
+            rObj = rObj.Mul(new Rational(-1));
+            return lObj.Add(rObj);
+        }
+        public static Rational operator *(Rational lObj, Rational rObj)
+        {
+            return lObj.Mul(rObj);
+        }
+        public static Rational operator /(Rational lObj, Rational rObj)
+        {
+            return lObj.Mul(new Rational(rObj.Denominator,rObj.Numerator));
+        }
+        public static implicit operator Rational(int num )
+        {
+            Rational r = new Rational(num);
+            return r;
+        }
+        public static explicit operator double(Rational r)
+        {
+            return r.Value;
+        }
     }
 }

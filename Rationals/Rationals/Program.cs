@@ -47,6 +47,18 @@ namespace Rationals
             {
                 Console.WriteLine("Not valid Rational was caught by the test...");
             }
+
+            Console.WriteLine("---------------------------- lab 10 Appendix: ----------------------------");
+            Rational test = new Rational(2,5);
+
+            Console.WriteLine($"multiply test object {test} with itself equals to {test*test}");
+            Console.WriteLine($"Dividing test object {test} with itself equals to {test / test}");
+            Console.WriteLine($"Adding test object {test} with itself equals to {test + test}");
+            Console.WriteLine($"Subtraction test object {test} with Rational of 1 equals to {test - new Rational(1)}");
+
+            Console.WriteLine($"Cast int 10 to Rational object {(Rational) 10}");
+            Console.WriteLine($"Cast test object {test} to double {(double) test}");
+
             Console.ReadKey();
         }
     }
